@@ -42,9 +42,10 @@ def scan_create():
         If there is an error creating the folders.
     """
     try:
-        [os.makedirs(os.path.join(DIR, f), exist_ok=True) for f in FLDRS if not os.path.exists(os.path.join(DIR, f))]
-    except Exception as e:
-        print(f"Error creating folders: {e}")
+        [os.makedirs(os.path.join(DIR, f), exist_ok=True) for f in FLDRS
+         if not os.path.exists(os.path.join(DIR, f))]
+    except Exception as err:
+        print(f"Error creating folders: {err}")
 
 def scan_new():
     """
@@ -64,17 +65,21 @@ def scan_new():
         If there is an error checking the files.
     """
     try:
-        files = [f for f in os.listdir(DIR) if os.path.isfile(os.path.join(DIR, f)) and f not in FLDRS and not f.startswith('.')]
+        files = [f for f in os.listdir(DIR)
+                 if os.path.isfile(os.path.join(DIR, f))
+                 and f not in FLDRS
+                 and not f.startswith('.')]
+        files = sorted(files, key=lambda file: file.split('.')[-1])
         return files
-    except Exception as e:
-        print(f"Error checking files: {e}")
+    except Exception as err:
+        print(f"Error checking files: {err}")
         return []
 
 def prompt():
     """
-    Prompt the user to run the cleaner if there are new files in the Downloads directory.
+    Prompt the user to run the cleaner if there are new files in the Downloads dir.
 
-    This function lists new files in the Downloads directory and prompts the user
+    This function lists new files in the Downloads dir and prompts the user
     to decide whether to run the cleaner to move these files to the appropriate folders.
     If the user input is invalid, it prompts again until a valid input is received.
 
@@ -86,20 +91,19 @@ def prompt():
     files = scan_new()
     if files:
         print("DOWNLOADS MESSY; CONTENTS INCLUDE:\n----------------------------------")
-        for f in files:
-            print(f)
+        for file in files:
+            print(file)
         while True:
             user_input = input("\nWould you like to run the cleaner? y/n: ").strip().lower()
             if user_input == 'y':
                 try:
                     subprocess.run(["make", "clean"], check=True)
-                except subprocess.CalledProcessError as e:
-                    print(f"Error running the cleaner: {e}")
+                except subprocess.CalledProcessError as err:
+                    print(f"Error running the cleaner: {err}")
                 break
-            elif user_input == 'n':
+            if user_input == 'n':
                 break
-            else:
-                print("Invalid input. Please enter 'y' for yes or 'n' for no.")
+            print("Invalid input. Please enter 'y' for yes or 'n' for no.")
 
 if __name__ == "__main__":
     scan_create()

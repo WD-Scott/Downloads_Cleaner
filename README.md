@@ -3,4 +3,3 @@ Personal project to practice Python skills while building something useful -- a 
 
 # FUTURE UPDATES:
   - Take it one step deeper in Downloads dir structure to create subsubdirs for the most common filetypes
-  - Update the scanner.py file so that, when it echos the new files to console they're ordered by filetype

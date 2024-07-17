@@ -19,7 +19,7 @@ Wyatt D. Scott (wyatt.d.scott28@gmail.com)
 
 Last Updated:
 -------------
-14 July 2024
+16 July 2024
 '''
 import os
 import logging
@@ -104,7 +104,6 @@ class MoverHandler:
                         moved = self.move_file(name)
                         if moved:
                             pbar.update(1)
-                            #tqdm.write(f"Moved file: {name}")
                 logging.info("Cleaning complete")
         except FileNotFoundError as e_name:
             logging.error("An error occurred: %s", e_name)
@@ -136,8 +135,6 @@ class MoverHandler:
                     os.rename(src, new_name)
                 else:
                     move(src, dest)
-                #logging.info(f"Moved {category} file: {name}")
-                #print(f"Moved {category} file: {name}")
                 moved = True
                 break
 
