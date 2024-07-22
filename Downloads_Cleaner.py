@@ -74,7 +74,7 @@ while True:
         result, new_filez = scan_downloads()
         window['-OUTPUT-'].update(result)
         if new_filez:
-            choice = sg.popup_yes_no("Would you like to run the cleaner?")
+            choice = sg.popup_yes_no("Run cleaner?")
             if choice == 'Yes':
                 clean_result = run_cleaner()
                 window['-OUTPUT-'].update(clean_result)
