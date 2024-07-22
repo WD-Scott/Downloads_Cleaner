@@ -28,4 +28,4 @@ clean:
 build_exe: remove_pathlib
 	. env/bin/activate; pyinstaller -w -F -i "icon.icns" "Downloads_Cleaner.py"
 	mv dist/Downloads_Cleaner.app .
-	rm -rf build dist Downloads_Cleaner.spec
+	#rm -rf build dist Downloads_Cleaner.spec
