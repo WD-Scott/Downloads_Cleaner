@@ -2,8 +2,10 @@
 scanners.py
 ===========
 
-This Python file includes utility functions for the cleaner.py file, including:
+This Python file includes utility functions for the cleaner.py file.
 
+Functions:
+----------
 scan_create():
     Creates necessary folders in the Downloads dir if they do not exist.
 
@@ -13,14 +15,13 @@ scan_new():
 prompt():
     Prompts users to run the cleaner if new files are in the Downloads dir.
 
-    
 Author:
 -------
 Wyatt D. Scott (wyatt.d.scott28@gmail.com)
 
 Last Updated:
 -------------
-16 July 2024
+21 July 2024
 """
 
 import os
@@ -34,7 +35,7 @@ def scan_create():
     Create necessary folders in the Downloads directory if they do not exist.
 
     This function checks for the presence of specific folders in the Downloads
-    directory. If any of the folders do not exist, it creates them.
+    directory and creates them if they do not exist.
 
     Raises
     ------
@@ -52,7 +53,8 @@ def scan_new():
     Scan the Downloads directory for new files.
 
     This function scans the Downloads directory for files that are not part of
-    the predefined folders and do not start with a dot ("."). Hidden files are ignored.
+    the predefined folders and do not start with a dot ("."). 
+    The function ignores hidden files.
 
     Returns
     -------

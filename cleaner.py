@@ -6,12 +6,18 @@ This Python module contains code to cleanup the downloads directory.
 
 Config:
 -------
+    Python dict to centralize all configuration settings.
 
 Functions:
 ----------
+make_unique():
+    Generate a unique file name if a file with the same name 
+    already exists in the destination directory.
 
 Classes:
 --------
+MoverHandler:
+    Handler for moving files based on their extensions.
 
 Author:
 -------
@@ -19,13 +25,13 @@ Wyatt D. Scott (wyatt.d.scott28@gmail.com)
 
 Last Updated:
 -------------
-16 July 2024
+21 July 2024
 '''
 import os
 import logging
 from os.path import exists, join, splitext
 from shutil import move
-from tqdm import tqdm
+import PySimpleGUI as sg
 
 # Configuration
 config = {
@@ -83,7 +89,7 @@ class MoverHandler:
     """
     def process(self):
         """
-        Process files in dowloands dir and move them 
+        Process files in downloads dir and move them 
         to appropriate folders based on their extensions.
     
         Raises
@@ -96,15 +102,21 @@ class MoverHandler:
             For any other unexpected errors that occur during the file processing.
         """
         try:
-            with os.scandir(config['source_dir']) as entries:
-                downloads = [entry.name for entry in entries if entry.is_file() and not entry.name.startswith('.')]
-                total_files = len(downloads)
-                with tqdm(total=total_files, desc="Processing files", unit="file", dynamic_ncols=True) as pbar:
-                    for name in downloads:
-                        moved = self.move_file(name)
-                        if moved:
-                            pbar.update(1)
-                logging.info("Cleaning complete")
+            downloads = [entry.name for entry in os.scandir(config['source_dir'])
+                         if entry.is_file() and not entry.name.startswith('.')]
+            total_files = len(downloads)
+
+            # Create the progress meter window
+            sg.OneLineProgressMeter('Cleaning Files', 0, total_files, 'key', 'Processing files...')
+
+            for index, name in enumerate(downloads):
+                moved = self.move_file(name)
+                if moved:
+                    sg.OneLineProgressMeter('Cleaning Files', index + 1, total_files, 'key', 'Processing files...')
+
+            sg.OneLineProgressMeter('Cleaning Files', total_files, total_files, 'key', 'Cleaning complete...')
+            logging.info("Cleaning complete")
+
         except FileNotFoundError as e_name:
             logging.error("An error occurred: %s", e_name)
         except PermissionError as e_name:
