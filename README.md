@@ -1,20 +1,21 @@
 [![Application_Build](https://github.com/WD-Scott/Downloads_Cleaner/actions/workflows/validation.yml/badge.svg)](https://github.com/WD-Scott/Downloads_Cleaner/actions/workflows/validation.yml)
 
 # Downloads_Cleaner
-Personal project to practice Python skills while building something useful -- a semi-automated way to clean the Downloads directory!
+Personal project to practice Python skills while building something useful — a semi-automated way to clean the Downloads directory!
 
 <div align="center">
     <img src="images/icon.png">
 </div>
 <p align="center">
 
-## Synopsis:
+<details>
+<summary><h2 style="font-size: 22px;">Synopsis</h2></summary>
 
 How often have you downloaded documents, pictures, code files, etc., and found yourself scrolling through a vast and unorganized Downloads folder to try and find something you want or need?
 
-I created the `Downloads_Cleaner` as a means of organizing the Downloads directory on MacOS. It's not yet OS agnostic. I created a few Python module files with functions that I first utilized via a makefile, but this small personal project quickly grew as others asked if they could also use it. Thus, I readjusted the code base and used `PySimpleGui` and `PyInstaller` to create a basic graphical user interface -- effectively turning the Python code base into an executable application.
+I created the `Downloads_Cleaner` as a means of organizing the Downloads directory on MacOS. It's not yet OS-agnostic. I created a few Python module files with functions that I first utilized via a makefile, but this small personal project quickly grew as others asked if they could also use it. Thus, I readjusted the code base and used `PySimpleGui` and `PyInstaller` to create a basic graphical user interface -- effectively turning the Python code base into an executable application.
 
-Upon double-clicking the application, you're presented with the following gui:
+Upon double-clicking the application, you're presented with the following GUI:
 
 <div align="center">
     <img src="images/gui1.png">
@@ -23,16 +24,16 @@ Upon double-clicking the application, you're presented with the following gui:
 
 You can select to `Scan` to scan the Downloads directory for any new files and create subfolders for documents, images, videos, audio, and code files (based on the file extensions). You can also select `Exit` to close the application.
 
-Upon selecting `Scan`, you'll see text generated in the window that either lets you know that there were no new files in your Downloads folder or, if there were, you'll see a message that "Your downloads folder is messy; the contents include:" followed by the new files in your Downloads directory. At this point, you'll also be presented with a popup to run the cleaner should you choose to do so.
+Upon selecting `Scan`, you'll see text generated in the window that either lets you know that there were no new files in your Downloads folder or, if there were, you'd see a message that "Your downloads folder is messy; the contents include:" followed by the new files in your Downloads directory. At this point, you'll also be presented with a popup to run the cleaner should you choose to do so.
 
 <div align="center">
     <img src="images/gui2.png">
 </div>
 <p align="center">
 
-If you select "No", the popup closes and you can select "Exit" to close the application or "Scan" to re-run the scanner.
+If you select "No," the popup closes, and you can select "Exit" to close the application or "Scan" to re-run the scanner.
 
-If you select "Yes", a progress bar will appear and then you'll be presented with a message letting you know that the cleaning is complete.
+If you select "Yes," a progress bar will appear, and you'll see a message letting you know that the cleaning is complete.
 
 <div align="center">
     <img src="images/gui3.png">
@@ -46,7 +47,9 @@ If you select "Yes", a progress bar will appear and then you'll be presented wit
 
 There's much room for improvement and additional functionality, as I'm not a software engineer by training.
 
-Rather than make an App that's installable from the app store, I built this mainly to practice various workflows from developing a code base, makefile, and then working in GitHub Actions, etc. So, perhaps eventually there will be an installable App, but for now, users will have to build it locally (steps outlined below).
+Rather than make an App installable from the app store, I built this mainly to practice various workflows, from developing a code base and makefile to working in GitHub Actions, etc. So, perhaps eventually, there will be an installable App, but for now, users will have to build it locally (steps outlined below).
+
+</details>
 
 <details>
 <summary><h2 style="font-size: 22px;">How to build it on your machine (MacOS-only, for now)</h2></summary>
