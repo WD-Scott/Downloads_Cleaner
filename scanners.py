@@ -21,14 +21,14 @@ Wyatt D. Scott (wyatt.d.scott28@gmail.com)
 
 Last Updated:
 -------------
-21 July 2024
+26 July 2024
 """
 
 import os
 import subprocess
 
 DIR = os.path.expanduser('~/Downloads')
-FLDRS = ["Imgs", "Videos", "Audio", "Docs", "py"]
+FLDRS = ["Images", "Videos", "Audio", "Documents", "Coding"]
 
 def scan_create():
     """

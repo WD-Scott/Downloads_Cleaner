@@ -25,7 +25,7 @@ Wyatt D. Scott (wyatt.d.scott28@gmail.com)
 
 Last Updated:
 -------------
-21 July 2024
+26 July 2024
 '''
 import os
 import logging
@@ -37,11 +37,11 @@ import PySimpleGUI as sg
 config = {
     'source_dir': os.path.expanduser('~/Downloads'),
     'directories': {
-        'images': os.path.expanduser('~/Downloads/Imgs'),
+        'images': os.path.expanduser('~/Downloads/Images'),
         'videos': os.path.expanduser('~/Downloads/Video'),
         'audio': os.path.expanduser('~/Downloads/Audio'),
-        'docs': os.path.expanduser('~/Downloads/Docs'),
-        'py': os.path.expanduser('~/Downloads/py')
+        'documents': os.path.expanduser('~/Downloads/Documents'),
+        'coding': os.path.expanduser('~/Downloads/Coding')
     },
     'extensions': {
         'images': [".jpg", ".jpeg", ".jpe", ".jif", ".jfif", ".jfi", ".png", ".gif", ".webp",
@@ -53,8 +53,8 @@ config = {
                    ".mp4v", ".m4v", ".avi", ".wmv", 
                    ".mov", ".qt", ".flv", ".swf", ".avchd"],
         'audio': [".m4a", ".flac", ".mp3", ".wav", ".wma", ".aac"],
-        'docs': [".doc", ".docx", ".odt", ".pdf", ".xls", ".xlsx", ".ppt", ".pptx"],
-        'py': [".py", ".ipynb"]
+        'documents': [".doc", ".docx", ".odt", ".pdf", ".xls", ".xlsx", ".ppt", ".pptx"],
+        'coding': [".py", ".ipynb"]
     }
 }
 
