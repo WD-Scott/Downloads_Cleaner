@@ -4,7 +4,7 @@
 Personal project to practice Python skills while building something useful — a semi-automated way to clean the Downloads directory!
 
 <div align="center">
-    <img src="images/icon.icns">
+    <img src="images/icon.png">
 </div>
 <p align="center">
 
