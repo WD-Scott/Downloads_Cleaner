@@ -14,7 +14,7 @@ remove_pathlib: update
 	. env/bin/activate; pip uninstall -y pathlib
 
 # Job to scan downloads folder
-.PHONY: scancs
+.PHONY: scan
 scan:
 	python3 scanners.py
 
@@ -27,5 +27,5 @@ clean:
 .PHONY: build_exe
 build_exe: remove_pathlib
 	. env/bin/activate; pyinstaller -w -F -i "icon.icns" "Downloads_Cleaner.py"
-	#mv dist/Downloads_Cleaner.app .
-	#rm -rf build dist Downloads_Cleaner.spec
+	mv dist/Downloads_Cleaner.app .
+	rm -rf build dist Downloads_Cleaner.spec
