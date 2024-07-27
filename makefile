@@ -14,7 +14,7 @@ remove_pathlib: update
 	. env/bin/activate; pip uninstall -y pathlib
 
 # Job to scan downloads folder
-.PHONY: scancs
+.PHONY: scan
 scan:
 	python3 scanners.py
 
