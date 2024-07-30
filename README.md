@@ -2,7 +2,9 @@
 
 <details>
 <summary><h1 style="font-size: 22px;">Issues to Address</h1></summary>
+    
 * Build fails if user doesn't have Xcode on their Mac.
+    
 * MacOS blocks the application from running, reports "termination reason: namespace SIGNAL, code 6 abort trap: 6"
 </details>
 
