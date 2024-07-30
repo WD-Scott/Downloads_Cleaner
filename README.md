@@ -1,5 +1,11 @@
 [![Application_Build](https://github.com/WD-Scott/Downloads_Cleaner/actions/workflows/validation.yml/badge.svg)](https://github.com/WD-Scott/Downloads_Cleaner/actions/workflows/validation.yml)
 
+<details>
+<summary><h1 style="font-size: 22px;">Issues to Address</h1></summary>
+* Build fails if user doesn't have Xcode on their Mac.
+* MacOS blocks the application from running, reports "termination reason: namespace SIGNAL, code 6 abort trap: 6"
+</details>
+
 # Downloads_Cleaner
 Personal project to practice Python skills while building something useful — a semi-automated way to clean the Downloads directory!
 
@@ -10,6 +16,7 @@ Personal project to practice Python skills while building something useful — a
 
 <details>
 <summary><h2 style="font-size: 22px;">Synopsis</h2></summary>
+
 
 How often have you downloaded documents, pictures, code files, etc., and found yourself scrolling through a vast and unorganized Downloads folder to try and find something you want or need?
 
