@@ -29,3 +29,8 @@ build_exe: remove_pathlib
 	. env/bin/activate; pyinstaller -w -F -i "icon.icns" "Downloads_Cleaner.py"
 	@# Check if running on macOS and perform actions accordingly
 	@uname | grep -q 'Darwin' && mv dist/Downloads_Cleaner.app . && rm -rf build dist Downloads_Cleaner.spec || echo "Skipping macOS specific commands"
+
+# Job to run tests
+.PHONY: test
+test:
+	pytest test_cleaner.py -vvx
