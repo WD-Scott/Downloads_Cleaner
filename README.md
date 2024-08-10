@@ -8,6 +8,27 @@
 * MacOS blocks the application from running, reports "termination reason: namespace SIGNAL, code 6 abort trap: 6"
 </details>
 
+<details>
+<summary><h1 style="font-size: 22px;">Next steps for building out test suite</h1></summary>
+
+* Rebuild the `test_make_unique()` function now that you added jobs in makefile and yml to create a temporary Downloads folder for testing. Will need to adjust the paremetrize call and the test cases set up for this as well, in the `test_cleaner.py` file.
+
+* Buildout test suite for the class and its methods from `test_cleaner.py`
+
+* Buildout test suite for the functions etc. in the `scanners.py` file
+
+* Run the test suite
+
+* Lint the code with Pylint
+
+* Rerun the test suite
+
+* Confirm everything works (tests, building the exe, etc.)
+
+* Adjust `README.md` file accordingly.
+
+</details>
+
 # Downloads_Cleaner
 Personal project to practice Python skills while building something useful — a semi-automated way to clean the Downloads directory!
 
