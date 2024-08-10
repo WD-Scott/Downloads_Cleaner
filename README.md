@@ -1,4 +1,4 @@
-[![Application_Build](https://github.com/WD-Scott/Downloads_Cleaner/actions/workflows/validation.yml/badge.svg)](https://github.com/WD-Scott/Downloads_Cleaner/actions/workflows/validation.yml)
+[![Application_Build](https://github.com/WD-Scott/Downloads_Cleaner/actions/workflows/validations.yml/badge.svg)](https://github.com/WD-Scott/Downloads_Cleaner/actions/workflows/validations.yml)
 
 <details>
 <summary><h1 style="font-size: 22px;">Issues to Address</h1></summary>
