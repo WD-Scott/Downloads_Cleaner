@@ -29,4 +29,8 @@ jobs:
 
       - name: build app
         run: |
+          make create_downloads
+
+      - name: build app
+        run: |
           make build_exe
