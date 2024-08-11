@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pkg_cleaner"
+version = "0.0.1"
+authors = [
+    { name = "Wyatt Scott", email = "wyatt.d.scott28@gmail.com" },
+]
+description = "Downloads Cleaner"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+]
+
+[project.urls]
+Homepage = "https://github.com/"
+Issues = "https://github.com/WD-Scott/Downloads_Cleaner/issues"
