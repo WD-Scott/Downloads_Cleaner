@@ -10,10 +10,6 @@ Last Updated:
 -------------
 11 August 2024
 '''
-import os
-import logging
-from os.path import exists, join, splitext
-from shutil import move
 import pytest
 from pkg_cleaner import make_unique, config
 
@@ -51,4 +47,4 @@ def test_make_unique(new_name, original, counter=2):
     WHEN checking if a unique file name is generated
     THEN ensure the name is unique and formatted correctly
     '''
-    assert make_unique(dst, original, 2) == new_name
+    assert make_unique(dst, original, counter=2) == new_name

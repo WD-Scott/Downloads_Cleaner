@@ -12,13 +12,6 @@ Last Updated:
 '''
 
 import os
-import logging
-from os.path import exists, join, splitext
-from shutil import move
-import PySimpleGUI as sg
-import pytest
-from pkg_cleaner import config, make_unique
-from pkg_cleaner import scan_create, scan_new, prompt
 
 DIR_SCAN_CREATE = os.getcwd()+'/tests/Downloads/'
 FLDRS = ["Images", "Videos", "Audio", "Documents", "Coding"]
@@ -40,7 +33,7 @@ def test_scan_create_missing_subdirs():
              if os.path.isdir(os.path.join(DIR_SCAN_CREATE, i))
              and i in FLDRS]
     actual = len(found)
-    assert expected == actual, f"Should find 0 specified subdirs"
+    assert expected == actual, "Should find 0 specified subdirs"
 
 def test_scan_create():
     '''
@@ -58,9 +51,8 @@ def test_scan_create():
                if os.path.isdir(os.path.join(DIR_SCAN_CREATE, i))
                and i in FLDRS])
     actual = len(created)
-    assert len(FLDRS) == actual, f"Should find 5 specified subdirs"
-    assert sorted(FLDRS) == created, f"Each of the {FLDRS.items()} folders should now exist, missing {[i for i in FLDRS if i not in created]}"
-    FLDRS2 = ['Images', 'Videos', 'Audio', 'Documents', 'Coding', 'Missed']
-    missed = [i for i in FLDRS2 if i not in created]
-    assert missed[0] == 'Missed', f"Not correctly identifying missed folders upon scan and create new"
-
+    assert len(FLDRS) == actual, "Should find 5 specified subdirs"
+    assert sorted(FLDRS) == created, f"Missed {[i for i in FLDRS if i not in created]}"
+    fldrs_2 = ['Images', 'Videos', 'Audio', 'Documents', 'Coding', 'Missed']
+    missed = [i for i in fldrs_2 if i not in created]
+    assert missed[0] == 'Missed', "Not identifying missed folders"
