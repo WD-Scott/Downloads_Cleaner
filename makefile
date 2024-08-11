@@ -35,7 +35,15 @@ create_downloads:
 	@mkdir -p Downloads
 	@bash -c "touch Downloads/tester.png Downloads/tester.py Downloads/tester.pdf Downloads/tester.mp4 Downloads/tester.mp3"
 
+# Job to remove the tests/Downloads dir before running pytests
+drop_temp_downloads:
+	@rm -rf tests/Downloads/Audio
+	@rm -rf tests/Downloads/Coding
+	@rm -rf tests/Downloads/Documents
+	@rm -rf tests/Downloads/Images
+	@rm -rf tests/Downloads/Videos
+
 # Job to run tests
 .PHONY: test
-test:
-	pytest test_cleaner.py -vvx
+test: drop_temp_downloads
+	pytest tests -vvx
