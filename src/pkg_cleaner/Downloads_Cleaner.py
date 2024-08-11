@@ -23,8 +23,8 @@ Last Updated:
 
 import os
 import PySimpleGUI as sg
-from scanners import scan_create, scan_new
-from cleaner import config, MoverHandler
+from pkg_cleaner.scanners import scan_create, scan_new
+from pkg_cleaner.cleaner import config, MoverHandler
 
 def scan_downloads():
     """
