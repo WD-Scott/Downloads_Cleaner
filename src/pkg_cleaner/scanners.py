@@ -1,4 +1,4 @@
-"""
+'''
 scanners.py
 ===========
 
@@ -21,8 +21,8 @@ Wyatt D. Scott (wyatt.d.scott28@gmail.com)
 
 Last Updated:
 -------------
-26 July 2024
-"""
+11 August 2024
+'''
 
 import os
 import subprocess
