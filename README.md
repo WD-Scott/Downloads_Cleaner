@@ -11,11 +11,13 @@
 <details>
 <summary><h1 style="font-size: 22px;">Next steps for building out test suite</h1></summary>
 
-* Rebuild the `test_make_unique()` function now that you added jobs in makefile and yml to create a temporary Downloads folder for testing. Will need to adjust the paremetrize call and the test cases set up for this as well, in the `test_cleaner.py` file.
+### Next Steps for testing
+
+* Rebuild the `test_make_unique()` function now that there are makefile jobs and yml to create a temporary Downloads folder for testing. Will need to adjust the parametrize call and the test cases set up for this as well, in the `test_cleaner.py` file.
 
 * Buildout test suite for the class and its methods from `test_cleaner.py`
 
-* Buildout test suite for the functions etc. in the `scanners.py` file
+* Buildout test suite for the functions etc. in the `scanners.py` file. Adjust the existing test functions to use the actual functions from the `scanners.py` file rather than new code (will need to add import statements to the top of `test_scanners.py`)
 
 * Run the test suite
 
