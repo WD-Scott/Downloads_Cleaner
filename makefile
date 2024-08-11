@@ -30,6 +30,11 @@ build_exe: remove_pathlib
 	@# Check if running on macOS and perform actions accordingly
 	@uname | grep -q 'Darwin' && mv src/pkg_cleaner/dist/Downloads_Cleaner.app . && rm -rf src/pkg_cleaner/build src/pkg_cleaner/dist src/pkg_cleaner/Downloads_Cleaner.spec || echo "Skipping macOS specific commands"
 
+# Job to create Downloads dir for testing and add various tester files
+create_downloads:
+	@mkdir -p tests/Downloads
+	@bash -c "touch tests/Downloads/tester.png tests/Downloads/tester.py tests/Downloads/tester.pdf tests/Downloads/tester.mp4 tests/Downloads/tester.mp3"
+
 # Job to remove the tests/Downloads dir before running pytests
 drop_temp_downloads:
 	@rm -rf tests/Downloads/Audio
