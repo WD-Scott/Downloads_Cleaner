@@ -18,19 +18,21 @@ Wyatt D. Scott (wyatt.d.scott28@gmail.com)
 
 Last Updated:
 -------------
-11 August 2024
+12 August 2024
 '''
 
 import os
 import PySimpleGUI as sg
-from pkg_cleaner.scanners import scan_create, scan_new
-from pkg_cleaner.cleaner import config, MoverHandler
+from pkg_cleaner import scan_create, scan_new, config, MoverHandler
+
+DIR = os.path.expanduser('~/Downloads')
+FLDRS = ["Images", "Videos", "Audio", "Documents", "Coding"]
 
 def scan_downloads():
-    """
+    '''
     Scans the Downloads directory for new files.
-    """
-    scan_create()
+    '''
+    scan_create(DIR, FLDRS)
     new_files = scan_new()
     if new_files:
         message = "Your downloads folder is messy; the contents include:" + "\n" + "------------------------------------------------------------------------" + "\n" + "\n".join(new_files)
@@ -39,9 +41,9 @@ def scan_downloads():
     return message, []
 
 def run_cleaner():
-    """
+    '''
     Runs the file cleaner on the Downloads directory.
-    """
+    '''
     try:
         download_files = [e.name for e in os.scandir(config['source_dir']) if e.is_file() and not e.name.startswith('.')]
         total_files = len(download_files)
