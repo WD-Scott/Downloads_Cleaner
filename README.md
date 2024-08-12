@@ -1,10 +1,15 @@
 [![Application_Build](https://github.com/WD-Scott/Downloads_Cleaner/actions/workflows/validations.yml/badge.svg)](https://github.com/WD-Scott/Downloads_Cleaner/actions/workflows/validations.yml)
 
+<div align="center">
+    <img src="images/icon.png">
+</div>
+<p align="center">
+
 <details>
 <summary><h1 style="font-size: 22px;">Issues to Address</h1></summary>
-    
+
 * Build fails if user doesn't have Xcode on their Mac.
-    
+
 * MacOS blocks the application from running, reports "termination reason: namespace SIGNAL, code 6 abort trap: 6"
 </details>
 
@@ -45,11 +50,6 @@
 
 # Downloads_Cleaner
 Personal project to practice Python skills while building something useful — a semi-automated way to clean the Downloads directory!
-
-<div align="center">
-    <img src="images/icon.png">
-</div>
-<p align="center">
 
 <details>
 <summary><h2 style="font-size: 22px;">Synopsis</h2></summary>
