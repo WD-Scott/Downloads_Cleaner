@@ -11,8 +11,6 @@
 <details>
 <summary><h1 style="font-size: 22px;">Next steps for building out test suite</h1></summary>
 
-## Next Steps for code update and testing
-
 ### `scanners.py`
 
 * Add asserts where possible.
@@ -36,6 +34,8 @@
 * Rerun the test suite.
 
 * Confirm everything works (tests, building the exe, etc.).
+
+* Add a few versions of Python to run the workflow on (in `validations.yml`).
 
 * Use Prof. Olivares' approach to creating a workflow that tests the package install and uses basic tests.
 
