@@ -11,7 +11,7 @@ Config:
 Functions:
 ----------
 make_unique():
-    Generate a unique file name if a file with the same name 
+    Generate a unique file name if a file with the same name
     already exists in the destination directory.
 
 Classes:
@@ -25,7 +25,7 @@ Wyatt D. Scott (wyatt.d.scott28@gmail.com)
 
 Last Updated:
 -------------
-09 August 2024
+12 August 2024
 '''
 
 import os
@@ -34,7 +34,6 @@ from os.path import exists, join, splitext
 from shutil import move
 import PySimpleGUI as sg
 
-# Configuration
 config = {
     'source_dir': os.path.expanduser('~/Downloads'),
     'directories': {
@@ -45,27 +44,30 @@ config = {
         'coding': os.path.expanduser('~/Downloads/Coding')
     },
     'extensions': {
-        'images': [".jpg", ".jpeg", ".jpe", ".jif", ".jfif", ".jfi", ".png", ".gif", ".webp",
-                   ".tiff", ".tif", ".psd", ".raw", ".arw", ".cr2", ".nrw", ".k25", ".bmp", 
-                   ".dib", ".heif", ".heic", ".ind", ".indd", ".indt", ".jp2", ".j2k", ".jpf", 
-                   ".jpf", ".jpx", ".jpm", ".mj2", ".svg", ".svgz", ".ai", ".eps", ".ico"],
-        'videos': [".webm", ".mpg", ".mp2", ".mpeg", 
-                   ".mpe", ".mpv", ".ogg", ".mp4", 
-                   ".mp4v", ".m4v", ".avi", ".wmv", 
-                   ".mov", ".qt", ".flv", ".swf", ".avchd"],
+        'images': [".jpg", ".jpeg", ".jpe", ".jif", ".jfif",
+                   ".jfi", ".png", ".gif", ".webp", ".tiff",
+                   ".tif", ".psd", ".raw", ".arw", ".cr2",
+                   ".nrw", ".k25", ".bmp", ".dib", ".heif",
+                   ".heic", ".ind", ".indd", ".indt", ".jp2",
+                   ".j2k", ".jpf", ".jpf", ".jpx", ".jpm",
+                   ".mj2", ".svg", ".svgz", ".ai", ".eps", ".ico"],
+        'videos': [".webm", ".mpg", ".mp2", ".mpeg", ".mpe",
+                   ".mpv", ".ogg", ".mp4", ".mp4v", ".m4v",
+                   ".avi", ".wmv", ".mov", ".qt", ".flv", ".swf", ".avchd"],
         'audio': [".m4a", ".flac", ".mp3", ".wav", ".wma", ".aac"],
-        'documents': [".doc", ".docx", ".odt", ".pdf", ".xls", ".xlsx", ".ppt", ".pptx"],
+        'documents': [".doc", ".docx", ".odt", ".pdf", ".xls",
+                      ".xlsx", ".ppt", ".pptx"],
         'coding': [".py", ".ipynb"]
     }
 }
 
 def make_unique(dest, name, counter=1):
-    """
-    Generate a unique file name if a file with the same name 
+    '''
+    Generate a unique file name if a file with the same name
     already exists in the destination directory.
 
-    Parameters
-    ----------
+    Params
+    ------
     dest : str
         Destination directory.
     name : str
@@ -77,7 +79,7 @@ def make_unique(dest, name, counter=1):
     -------
     str
         Unique file name.
-    """
+    '''
     file_name, extn = splitext(name)
     new_name = f"{file_name}({counter}){extn}" if counter > 1 else name
     if exists(os.path.join(dest, new_name)):
@@ -85,14 +87,14 @@ def make_unique(dest, name, counter=1):
     return new_name
 
 class MoverHandler:
-    """
+    '''
     Handler for moving files based on their extensions.
-    """
+    '''
     def process(self):
-        """
-        Process files in downloads dir and move them 
+        '''
+        Process files in downloads dir and move them
         to appropriate folders based on their extensions.
-    
+
         Raises
         ------
         FileNotFoundError
@@ -101,7 +103,7 @@ class MoverHandler:
             If permission is denied while accessing or moving files.
         Exception
             For any other unexpected errors that occur during the file processing.
-        """
+        '''
         try:
             downloads = [entry.name for entry in os.scandir(config['source_dir'])
                          if entry.is_file() and not entry.name.startswith('.')]
@@ -112,9 +114,11 @@ class MoverHandler:
             for index, name in enumerate(downloads):
                 moved = self.move_file(name)
                 if moved:
-                    sg.OneLineProgressMeter('Cleaning Files', index + 1, total_files, 'key', 'Processing files...')
+                    sg.OneLineProgressMeter('Cleaning Files', index + 1,
+                                            total_files, 'key', 'Processing...')
 
-            sg.OneLineProgressMeter('Cleaning Files', total_files, total_files, 'key', 'Cleaning complete...')
+            sg.OneLineProgressMeter('Cleaning Files', total_files, total_files,
+                                    'key', 'Cleaning complete...')
             logging.info("Cleaning complete")
 
         except FileNotFoundError as e_name:
@@ -123,19 +127,19 @@ class MoverHandler:
             logging.error("An error occurred: %s", e_name)
 
     def move_file(self, name):
-        """
+        '''
         Move a file to the appropriate subdirectory based on its extension.
 
         Parameters
         ----------
         name : str
             Name of the file to be moved.
-        
+
         Returns
         -------
         bool
             True if the file was moved, False otherwise.
-        """
+        '''
         moved = False
         for category, extns in config['extensions'].items():
             if any(name.endswith(ext) or name.endswith(ext.upper()) for ext in extns):

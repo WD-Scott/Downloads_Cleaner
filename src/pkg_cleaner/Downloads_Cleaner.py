@@ -23,10 +23,7 @@ Last Updated:
 
 import os
 import PySimpleGUI as sg
-from pkg_cleaner import scan_create, scan_new, config, MoverHandler
-
-DIR = os.path.expanduser('~/Downloads')
-FLDRS = ["Images", "Videos", "Audio", "Documents", "Coding"]
+from pkg_cleaner import scan_create, scan_new, config, MoverHandler, DIR, FLDRS
 
 def scan_downloads():
     '''
@@ -35,9 +32,9 @@ def scan_downloads():
     scan_create(DIR, FLDRS)
     new_files = scan_new()
     if new_files:
-        message = "Your downloads folder is messy; the contents include:" + "\n" + "------------------------------------------------------------------------" + "\n" + "\n".join(new_files)
+        message = "Your downloads include:" + "\n" + "\n" + "\n".join(new_files)
         return message, new_files
-    message = "No new files found in Downloads."
+    message = "Did not find any new files."
     return message, []
 
 def run_cleaner():
@@ -45,7 +42,8 @@ def run_cleaner():
     Runs the file cleaner on the Downloads directory.
     '''
     try:
-        download_files = [e.name for e in os.scandir(config['source_dir']) if e.is_file() and not e.name.startswith('.')]
+        download_files = [e.name for e in os.scandir(config['source_dir'])
+                          if e.is_file() and not e.name.startswith('.')]
         total_files = len(download_files)
         if total_files == 0:
             return "No files to clean."
@@ -54,7 +52,8 @@ def run_cleaner():
         for idx, name in enumerate(download_files):
             moved = mover.move_file(name)
             if moved:
-                if not sg.one_line_progress_meter('Progress', idx + 1, total_files, 'key', 'Cleaning files...'):
+                if not sg.one_line_progress_meter('Progress', idx + 1,
+                                                  total_files, 'key', 'Cleaning...'):
                     break
         return "Cleaning complete! \n You can click 'Exit' below to close this window"
     except Exception as err:
@@ -63,7 +62,8 @@ def run_cleaner():
 layout = [
     [sg.Text('Downloads Cleaner', font=('Helvetica', 20, 'bold'))],
     [sg.Multiline(size=(65, 10), font=('Helvetica', 15), key='-OUTPUT-')],
-    [sg.Button('Scan', font=('Helvetica', 16), key='-SCAN-'), sg.Button('Exit', font=('Helvetica', 16))]
+    [sg.Button('Scan', font=('Helvetica', 16), key='-SCAN-'),
+     sg.Button('Exit', font=('Helvetica', 16))]
 ]
 
 window = sg.Window('Downloads Cleaner', layout, finalize=True)

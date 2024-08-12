@@ -11,21 +11,33 @@
 <details>
 <summary><h1 style="font-size: 22px;">Next steps for building out test suite</h1></summary>
 
-### Next Steps for testing
+## Next Steps for code update and testing
 
-* Rebuild the `test_make_unique()` function now that there are makefile jobs and yml to create a temporary Downloads folder for testing. Will need to adjust the parametrize call and the test cases set up for this as well, in the `test_cleaner.py` file.
+### `scanners.py`
 
-* Buildout test suite for the class and its methods from `test_cleaner.py`
+* Add asserts where possible.
 
-* Buildout test suite for the functions etc. in the `scanners.py` file. Adjust the existing test functions to use the actual functions from the `scanners.py` file rather than new code (will need to add import statements to the top of `test_scanners.py`)
+* Explore ways to test the `prompt` function.
 
-* Run the test suite
+### `cleaner.py`
 
-* Lint the code with Pylint
+* Buildout test suite for the `MoverHandler` class and its methods.
 
-* Rerun the test suite
+### `Downloads_Cleaner.py`
 
-* Confirm everything works (tests, building the exe, etc.)
+* ...
+
+### Overall:
+
+* Run the test suite.
+
+* Lint the code with Pylint.
+
+* Rerun the test suite.
+
+* Confirm everything works (tests, building the exe, etc.).
+
+* Use Prof. Olivares' approach to creating a workflow that tests the package install and uses basic tests.
 
 * Adjust `README.md` file accordingly.
 
