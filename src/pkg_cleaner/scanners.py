@@ -30,7 +30,7 @@ import subprocess
 DIR = os.path.expanduser('~/Downloads')
 FLDRS = ["Images", "Videos", "Audio", "Documents", "Coding"]
 
-def scan_create(dir, fldrs):
+def scan_create(directory, folders):
     '''
     Create directories within a specified root directory if they do not already exist.
 
@@ -48,22 +48,22 @@ def scan_create(dir, fldrs):
     Exception
         Prints error message if any occur during creation.
     '''
-    assert isinstance(dir, str), f"dir must be a str but is {type(dir)}"
-    assert isinstance(fldrs, list), f"fldrs must be list but is {type(fldrs)}"
+    assert isinstance(directory, str), f"dir must be a str but is {type(directory)}"
+    assert isinstance(folders, list), f"fldrs must be list but is {type(folders)}"
     try:
-        [os.makedirs(os.path.join(dir, f), exist_ok=True) 
-         for f in fldrs
-         if not os.path.exists(os.path.join(dir, f))]
+        [os.makedirs(os.path.join(directory, f), exist_ok=True)
+         for f in folders
+         if not os.path.exists(os.path.join(directory, f))]
     except Exception as err:
         print(f"Error creating folders: {err}")
 
 def scan_new():
-    """
+    '''
     Scan the Downloads directory for new files.
 
-    This function scans the Downloads directory for files that are not part of
-    the predefined folders and do not start with a dot ("."). 
-    The function ignores hidden files.
+    This function scans the Downloads directory for files that
+    are not part of the predefined folders and do not start
+    with a dot ("."). The function ignores hidden files.
 
     Returns
     -------
@@ -74,7 +74,7 @@ def scan_new():
     ------
     Exception
         If there is an error checking the files.
-    """
+    '''
     try:
         files = [f for f in os.listdir(DIR)
                  if os.path.isfile(os.path.join(DIR, f))
@@ -87,7 +87,7 @@ def scan_new():
         return []
 
 def prompt():
-    """
+    '''
     Prompt the user to run the cleaner if there are new files in the Downloads dir.
 
     This function lists new files in the Downloads dir and prompts the user
@@ -98,7 +98,7 @@ def prompt():
     ------
     subprocess.CalledProcessError
         If there is an error running the 'clean' Makefile target.
-    """
+    '''
     files = scan_new()
     if files:
         print("DOWNLOADS MESSY; CONTENTS INCLUDE:\n----------------------------------")
@@ -117,5 +117,5 @@ def prompt():
             print("Invalid input. Please enter 'y' for yes or 'n' for no.")
 
 if __name__ == "__main__":
-    scan_create()
+    scan_create(DIR, FLDRS)
     prompt()
