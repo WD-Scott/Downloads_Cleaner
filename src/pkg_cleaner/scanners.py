@@ -21,7 +21,7 @@ Wyatt D. Scott (wyatt.d.scott28@gmail.com)
 
 Last Updated:
 -------------
-11 August 2024
+12 August 2024
 '''
 
 import os
@@ -30,21 +30,30 @@ import subprocess
 DIR = os.path.expanduser('~/Downloads')
 FLDRS = ["Images", "Videos", "Audio", "Documents", "Coding"]
 
-def scan_create():
-    """
-    Create necessary folders in the Downloads directory if they do not exist.
+def scan_create(dir, fldrs):
+    '''
+    Create directories within a specified root directory if they do not already exist.
 
-    This function checks for the presence of specific folders in the Downloads
-    directory and creates them if they do not exist.
+    Params
+    ------
+    dir : str
+        The path wherein to look for and create fldrs.
+    fldrs : list of str
+        A list of folder names to create.
 
     Raises
     ------
+    AssertionError
+        If `dir` is not a string or `fldrs` is not a list.
     Exception
-        If there is an error creating the folders.
-    """
+        Prints error message if any occur during creation.
+    '''
+    assert isinstance(dir, str), f"dir must be a str but is {type(dir)}"
+    assert isinstance(fldrs, list), f"fldrs must be list but is {type(fldrs)}"
     try:
-        [os.makedirs(os.path.join(DIR, f), exist_ok=True) for f in FLDRS
-         if not os.path.exists(os.path.join(DIR, f))]
+        [os.makedirs(os.path.join(dir, f), exist_ok=True) 
+         for f in fldrs
+         if not os.path.exists(os.path.join(dir, f))]
     except Exception as err:
         print(f"Error creating folders: {err}")
 
