@@ -4,21 +4,13 @@ Downloads_Cleaner.py
 
 This Python module contains code to set up the GUI.
 
-Functions:
-----------
-scan_downloads():
-    Runs the functions from scanners.py.
-
-run_cleaner():
-    Runs the functions from cleaner.py.
-
 Author:
 -------
-Wyatt D. Scott (wyatt.d.scott28@gmail.com)
+Wyatt D. Scott (https://github.com/WD-Scott)
 
 Last Updated:
 -------------
-12 August 2024
+14 August 2024
 '''
 
 import os

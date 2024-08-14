@@ -2,30 +2,15 @@
 cleaner.py
 ==========
 
-This Python module contains code to cleanup the downloads directory.
-
-Config:
--------
-    Python dict to centralize all configuration settings.
-
-Functions:
-----------
-make_unique():
-    Generate a unique file name if a file with the same name
-    already exists in the destination directory.
-
-Classes:
---------
-MoverHandler:
-    Handler for moving files based on their extensions.
+This Python file contains code to cleanup the downloads directory.
 
 Author:
 -------
-Wyatt D. Scott (wyatt.d.scott28@gmail.com)
+Wyatt D. Scott (https://github.com/WD-Scott)
 
 Last Updated:
 -------------
-12 August 2024
+14 August 2024
 '''
 
 import os
@@ -109,7 +94,8 @@ class MoverHandler:
                          if entry.is_file() and not entry.name.startswith('.')]
             total_files = len(downloads)
 
-            sg.OneLineProgressMeter('Cleaning Files', 0, total_files, 'key', 'Processing files...')
+            sg.OneLineProgressMeter('Cleaning files', 0,
+                                    total_files, 'key', 'Processing...')
 
             for index, name in enumerate(downloads):
                 moved = self.move_file(name)
@@ -130,8 +116,8 @@ class MoverHandler:
         '''
         Move a file to the appropriate subdirectory based on its extension.
 
-        Parameters
-        ----------
+        Params
+        ------
         name : str
             Name of the file to be moved.
 
@@ -156,10 +142,15 @@ class MoverHandler:
 
         return moved
 
-if __name__ == "__main__":
+def run_cleanup():
+    '''
+    '''
     logging.basicConfig(level=logging.INFO,
                         format='%(asctime)s - %(message)s',
                         handlers=[logging.StreamHandler(), logging.FileHandler('cleaner.log')])
 
     event_handler = MoverHandler()
     event_handler.process()
+
+if __name__ == "__main__":
+    run_cleanup()

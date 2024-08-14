@@ -4,24 +4,13 @@ scanners.py
 
 This Python file includes utility functions for the cleaner.py file.
 
-Functions:
-----------
-scan_create():
-    Creates necessary folders in the Downloads dir if they do not exist.
-
-scan_new():
-     Scans the Downloads dir for new files.
-
-prompt():
-    Prompts users to run the cleaner if new files are in the Downloads dir.
-
 Author:
 -------
-Wyatt D. Scott (wyatt.d.scott28@gmail.com)
+Wyatt D. Scott (https://github.com/WD-Scott)
 
 Last Updated:
 -------------
-12 August 2024
+14 August 2024
 '''
 
 import os
@@ -48,7 +37,6 @@ def scan_create(directory, folders):
     Exception
         Prints error message if any occur during creation.
     '''
-    assert isinstance(directory, str), f"dir must be a str but is {type(directory)}"
     assert isinstance(folders, list), f"fldrs must be list but is {type(folders)}"
     try:
         [os.makedirs(os.path.join(directory, f), exist_ok=True)
