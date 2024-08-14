@@ -16,30 +16,6 @@
 <details>
 <summary><h1 style="font-size: 22px;">Next steps for building out test suite</h1></summary>
 
-### `scanners.py`
-
-* Add asserts where possible.
-
-* Explore ways to test the `prompt` function.
-
-### `cleaner.py`
-
-* Buildout test suite for the `MoverHandler` class and its methods.
-
-### `Downloads_Cleaner.py`
-
-* ...
-
-### Overall:
-
-* Run the test suite.
-
-* Lint the code with Pylint.
-
-* Rerun the test suite.
-
-* Confirm everything works (tests, building the exe, etc.).
-
 * Add a few versions of Python to run the workflow on (in `validations.yml`).
 
 * Use Prof. Olivares' approach to creating a workflow that tests the package install and uses basic tests.
