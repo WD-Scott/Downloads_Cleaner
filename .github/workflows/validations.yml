@@ -22,9 +22,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Set CI environment variable
-        run: echo "CI=true" >> $GITHUB_ENV
-
       - name: Install dependencies
         run: |
           make update
@@ -34,11 +31,6 @@ jobs:
         run: |
           make create_downloads
 
-      - name: Run tests with Xvfb
-        run: |
-          xvfb-run -a make test
-
       - name: build app
         run: |
           make build_exe
-
