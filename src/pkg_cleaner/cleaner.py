@@ -41,8 +41,8 @@ config = {
                    ".avi", ".wmv", ".mov", ".qt", ".flv", ".swf", ".avchd"],
         'audio': [".m4a", ".flac", ".mp3", ".wav", ".wma", ".aac"],
         'documents': [".doc", ".docx", ".odt", ".pdf", ".xls",
-                      ".xlsx", ".ppt", ".pptx"],
-        'coding': [".py", ".ipynb"]
+                      ".xlsx", ".ppt", ".pptx", ".csv"],
+        'coding': [".py", ".ipynb", ".R", ".Rmd", ".rds"]
     }
 }
 
@@ -142,15 +142,10 @@ class MoverHandler:
 
         return moved
 
-def run_cleanup():
-    '''
-    '''
+if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO,
                         format='%(asctime)s - %(message)s',
                         handlers=[logging.StreamHandler(), logging.FileHandler('cleaner.log')])
 
     event_handler = MoverHandler()
     event_handler.process()
-
-if __name__ == "__main__":
-    run_cleanup()
