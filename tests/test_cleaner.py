@@ -14,7 +14,7 @@ Last Updated:
 import os
 import shutil
 import pytest
-from pkg_cleaner import make_unique, config, scan_create, MoverHandler
+from pkg_cleaner import make_unique, config, scan_create
 
 dst = '/Downloads/'
 FLDRS = ["Images", "Videos", "Audio", "Documents", "Coding"]
