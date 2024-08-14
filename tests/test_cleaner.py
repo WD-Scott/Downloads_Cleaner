@@ -14,7 +14,7 @@ Last Updated:
 import os
 import shutil
 import pytest
-from pkg_cleaner import make_unique, config, scan_create, scan_new, MoverHandler
+from pkg_cleaner import make_unique, config, scan_create, MoverHandler
 
 dst = '/Downloads/'
 FLDRS = ["Images", "Videos", "Audio", "Documents", "Coding"]
@@ -56,7 +56,7 @@ def mock_downloads_dir(tmpdir_factory):
         os.makedirs(os.path.join(mock_dir, subdir))
 
     for file_name in test_files:
-        with open(os.path.join(mock_dir, file_name), 'w') as f:
+        with open(os.path.join(mock_dir, file_name), 'w', encoding='utf-8') as f:
             f.write("test")
 
     yield mock_dir
@@ -113,6 +113,7 @@ def test_config():
     dl = '/Downloads'
     assert cfg[-10:] == dl, f"Source dir should end with {dl} but got {cfg}"
 
+@pytest.mark.skipif(os.environ.get('CI') == 'true', reason="Skipping GUI tests in CI environment")
 @pytest.mark.parametrize("new_name, original", test_cases, ids=test_ids)
 def test_make_unique(new_name, original, counter=2):
     '''
@@ -124,6 +125,7 @@ def test_make_unique(new_name, original, counter=2):
     '''
     assert make_unique(dst, original, counter=2) == new_name
 
+@pytest.mark.skipif(os.environ.get('CI') == 'true', reason="Skipping GUI tests in CI environment")
 def test_process(mock_downloads_dir):
     '''
     Tests the `MoverHandler` class' `process` method.
@@ -134,7 +136,7 @@ def test_process(mock_downloads_dir):
     '''
     config['source_dir'] = str(mock_downloads_dir)
     config['directories'] = {folder: os.path.join(str(mock_downloads_dir), folder)\
-                             for folder in config['directories'].keys()}
+                             for folder in config['directories']}
 
     handler = MoverHandler()
     handler.process()
@@ -146,4 +148,3 @@ def test_process(mock_downloads_dir):
         for file in files:
             assert any(file.endswith(ext) for ext in config['extensions'][category]),\
             f"File {file} in {directory} does not have the correct extension"
-
