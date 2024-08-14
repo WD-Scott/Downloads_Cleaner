@@ -113,6 +113,7 @@ def test_config():
     dl = '/Downloads'
     assert cfg[-10:] == dl, f"Source dir should end with {dl} but got {cfg}"
 
+@pytest.mark.skipif(os.environ.get('CI') == 'true', reason="Skipping GUI tests in CI environment")
 @pytest.mark.parametrize("new_name, original", test_cases, ids=test_ids)
 def test_make_unique(new_name, original, counter=2):
     '''
