@@ -14,7 +14,7 @@ Last Updated:
 import os
 import shutil
 import pytest
-from pkg_cleaner import make_unique, config, scan_create
+from pkg_cleaner import make_unique, config, scan_create, MoverHandler
 
 dst = '/Downloads/'
 FLDRS = ["Images", "Videos", "Audio", "Documents", "Coding"]
@@ -113,37 +113,36 @@ def test_config():
     dl = '/Downloads'
     assert cfg[-10:] == dl, f"Source dir should end with {dl} but got {cfg}"
 
-# @pytest.mark.parametrize("new_name, original", test_cases, ids=test_ids)
-# def test_make_unique(new_name, original, counter=2):
-#     '''
-#     Tests the `make_unique` function from cleaner.py.
+@pytest.mark.parametrize("new_name, original", test_cases, ids=test_ids)
+def test_make_unique(new_name, original, counter=2):
+    '''
+    Tests the `make_unique` function from cleaner.py.
 
-#     GIVEN a file name and destination
-#     WHEN checking if a unique file name is generated
-#     THEN ensure the name is unique and formatted correctly
-#     '''
-#     assert make_unique(dst, original, counter=2) == new_name
+    GIVEN a file name and destination
+    WHEN checking if a unique file name is generated
+    THEN ensure the name is unique and formatted correctly
+    '''
+    assert make_unique(dst, original, counter=2) == new_name
 
-# @pytest.mark.skip(reason="Skipping GUI tests in CI environment")
-# def test_process(mock_downloads_dir):
-#     '''
-#     Tests the `MoverHandler` class' `process` method.
+def test_process(mock_downloads_dir):
+    '''
+    Tests the `MoverHandler` class' `process` method.
 
-#     GIVEN a MoverHandler instance.
-#     WHEN a user initializes the `process` method.
-#     THEN check that it correctly moves files.
-#     '''
-#     config['source_dir'] = str(mock_downloads_dir)
-#     config['directories'] = {folder: os.path.join(str(mock_downloads_dir), folder)\
-#                              for folder in config['directories']}
+    GIVEN a MoverHandler instance.
+    WHEN a user initializes the `process` method.
+    THEN check that it correctly moves files.
+    '''
+    config['source_dir'] = str(mock_downloads_dir)
+    config['directories'] = {folder: os.path.join(str(mock_downloads_dir), folder)\
+                             for folder in config['directories']}
 
-#     handler = MoverHandler()
-#     handler.process()
+    handler = MoverHandler()
+    handler.process()
 
-#     for category in config['directories']:
-#         directory = config['directories'][category]
-#         files = os.listdir(directory)
-#         assert len(files) > 0, f"No files found in {directory} after processing"
-#         for file in files:
-#             assert any(file.endswith(ext) for ext in config['extensions'][category]),\
-#             f"File {file} in {directory} does not have the correct extension"
+    for category in config['directories']:
+        directory = config['directories'][category]
+        files = os.listdir(directory)
+        assert len(files) > 0, f"No files found in {directory} after processing"
+        for file in files:
+            assert any(file.endswith(ext) for ext in config['extensions'][category]),\
+            f"File {file} in {directory} does not have the correct extension"
