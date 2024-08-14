@@ -14,7 +14,7 @@ Last Updated:
 import os
 import shutil
 import pytest
-from pkg_cleaner import make_unique, config, scan_create, scan_new, MoverHandler
+from pkg_cleaner import make_unique, config, scan_create, MoverHandler
 
 dst = '/Downloads/'
 FLDRS = ["Images", "Videos", "Audio", "Documents", "Coding"]
@@ -56,7 +56,7 @@ def mock_downloads_dir(tmpdir_factory):
         os.makedirs(os.path.join(mock_dir, subdir))
 
     for file_name in test_files:
-        with open(os.path.join(mock_dir, file_name), 'w') as f:
+        with open(os.path.join(mock_dir, file_name), 'w', encoding='utf-8') as f:
             f.write("test")
 
     yield mock_dir
@@ -134,7 +134,7 @@ def test_process(mock_downloads_dir):
     '''
     config['source_dir'] = str(mock_downloads_dir)
     config['directories'] = {folder: os.path.join(str(mock_downloads_dir), folder)\
-                             for folder in config['directories'].keys()}
+                             for folder in config['directories']}
 
     handler = MoverHandler()
     handler.process()
@@ -146,4 +146,3 @@ def test_process(mock_downloads_dir):
         for file in files:
             assert any(file.endswith(ext) for ext in config['extensions'][category]),\
             f"File {file} in {directory} does not have the correct extension"
-

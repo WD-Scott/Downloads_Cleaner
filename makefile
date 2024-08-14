@@ -45,5 +45,5 @@ drop_temp_downloads:
 
 # Job to run tests
 .PHONY: test
-test: drop_temp_downloads
+test:
 	pytest tests -vvx
