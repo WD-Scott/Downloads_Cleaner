@@ -124,6 +124,7 @@ def test_make_unique(new_name, original, counter=2):
     '''
     assert make_unique(dst, original, counter=2) == new_name
 
+@pytest.mark.skipif(os.environ.get('CI') == 'true', reason="Skipping GUI tests in CI environment")
 def test_process(mock_downloads_dir):
     '''
     Tests the `MoverHandler` class' `process` method.
