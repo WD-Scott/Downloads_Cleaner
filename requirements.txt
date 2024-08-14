@@ -1,2 +1,4 @@
 pyinstaller
 PySimpleGUI
+pytest
+git+http://github.com/WD-Scott/Downloads_Cleaner@main
