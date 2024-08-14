@@ -1,0 +1,44 @@
+name: Application_Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Set CI environment variable
+        run: echo "CI=true" >> $GITHUB_ENV
+
+      - name: Install dependencies
+        run: |
+          make update
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: create temp downloads
+        run: |
+          make create_downloads
+
+      - name: Run tests with Xvfb
+        run: |
+          xvfb-run -a make test
+
+      - name: build app
+        run: |
+          make build_exe
+
