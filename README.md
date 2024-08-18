@@ -18,7 +18,7 @@
 
 * Add a few versions of Python to run the workflow on (in `validations.yml`).
 
-* Use Prof. Olivares' approach to creating a workflow that tests the package install and uses basic tests.
+* Create a workflow that tests the package install and uses basic tests.
 
 * Adjust `README.md` file accordingly.
 
