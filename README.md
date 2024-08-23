@@ -20,12 +20,10 @@
 
 * Create a workflow that tests the package install and uses basic tests.
 
-* Adjust `README.md` file accordingly.
-
 </details>
 
 # Downloads_Cleaner
-Personal project to practice Python skills while building something useful — a semi-automated way to clean the Downloads directory!
+Personal Python project to build something useful — a semi-automated way to clean the Downloads directory!
 
 <details>
 <summary><h2 style="font-size: 22px;">Synopsis</h2></summary>
@@ -100,19 +98,58 @@ The executable file will be located in a new folder called `dist`. You can move 
 <summary><h2 style="font-size: 22px;">Manifest</h2></summary>
 
 <details>
-<summary><h3 style="font-size: 18px;">.py</h3></summary>
-    
-- [scanners.py](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/scanners.py)
-  
-- [cleaner.py](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/cleaner.py)
-  
-- [Downloads_Cleaner.py](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/Downloads_Cleaner.py)
+<summary><h3 style="font-size: 18px;">.github/workflows</h3></summary>
+
+The .github/workflows directory contains the .yml files for GitHub Actions workflows.
+
+- [validations.yml](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/.github/workflows/validations.yml)
+
+</details>
+
+<details>
+<summary><h3 style="font-size: 18px;">src/pkg_cleaner</h3></summary>
+
+The src/pkg_cleaner directory holds the source code for the installable package.
+
+- [__init__.py](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/src/pkg_cleaner/__init__.py)
+
+- [scanners.py](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/src/pkg_cleaner/scanners.py)
+
+- [cleaner.py](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/src/pkg_cleaner/cleaner.py)
+
+- [Downloads_Cleaner.py](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/src/pkg_cleaner/Downloads_Cleaner.py)
+
+</details>
+
+<details>
+<summary><h3 style="font-size: 18px;">tests</h3></summary>
+
+The tests directory contains a testing suite.
+
+- [test_cleaner.py](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/tests/tests_cleaner.py)
+
+</details>
+
+<details>
+<summary><h3 style="font-size: 18px;">images</h3></summary>
+
+The images directory contains image assets used in the README.md file.
+
+- [gui1.png](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/images/gui1.png)
+
+- [gui2.png](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/images/gui2.png)
+
+- [gui3.png](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/images/gui3.png)
+
+- [gui4.png](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/images/gui4.png)
+
+- [icon.png](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/images/icon.png)
 
 </details>
 
 <details>
 <summary><h3 style="font-size: 18px;">Misc</h3></summary>
-    
+
 - [README.md](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/README.md)
 
 - [LICENSE](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/LICENSE)
@@ -120,6 +157,14 @@ The executable file will be located in a new folder called `dist`. You can move 
 - [makefile](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/makefile)
 
 - [requirements.txt](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/requirements.txt)
+
+- [.gitignore](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/.gitignore)
+
+- [icon.icns](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/icon.icns)
+
+- [pyproject.toml](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/pyproject.toml)
+
+- [pytest.ini](https://github.com/WD-Scott/Downloads_Cleaner/blob/main/pytest.ini)
 
 </details>
 </details>
